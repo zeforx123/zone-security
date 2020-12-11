@@ -1,0 +1,46 @@
+<div class="login-enmetal">
+
+<header id="main-header" class="text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="mt-2">
+            <img src="../../assets/Enmetal.jpeg" width="130px" alt="" />
+          </p>
+    </div>
+    </div>
+  </div>
+</header>
+
+
+<flash-messages></flash-messages>
+
+<section id="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="text-center">Enmetal</h4>
+          </div>
+          <div>
+            <div class="card-body">
+              <form (submit)="login()">
+                <div class="form-group">
+                  <label for="email">Correo Electronico</label>
+                  <input type="email" class="form-control" name="email" [(ngModel)]="email" required placeholder="@">
+                </div>
+                <div class="form-group">
+                  <label for="password">Contraseña</label>
+                  <input type="password" class="form-control" name="password" [(ngModel)]="password" required placeholder="contraseña">
+                </div>
+                <input type="submit" value="login" class="btn btn-primary btn-block">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

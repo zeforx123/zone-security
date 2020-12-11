@@ -1,0 +1,4 @@
+.export-excel {
+  display: flex;
+  flex-direction: row-reverse;
+  }

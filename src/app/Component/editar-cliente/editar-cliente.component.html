@@ -1,0 +1,187 @@
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1><i class="fas fas-user"></i> Editar Venta</h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Se Crea el Formulario del Cliente Modal -->
+<form #clienteForm="ngForm" (ngSubmit)="guardar(clienteForm)">
+  <flash-messages></flash-messages>
+
+  <!-- Botones del Formulario -->
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a routerLink="/" class="btn btn-light btn-block">
+            <i class="fas fa-arrow-left"></i> Regresar al Inicio
+          </a>
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success btn-block" [disabled]="!clienteForm.valid">
+            <i class="fa fa-check"></i> Guardar Cliente
+          </button>
+        </div>
+        <div class="col-md-3">
+          <a href="#" (click)="eliminar()" class="btn btn-danger btn-block">
+            <i class="fas fa-trash"></i> Eliminar Cliente
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="details">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>Editar Cliente</h4>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="nombre">Nombre*</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  class="form-control"
+                  #nombre="ngModel"
+                  [(ngModel)]="clienteFront.nombre"
+                  [ngClass]="{ 'is-invalid': nombre.errors && nombre.touched }"
+                  required
+                  minlength="2"
+                />
+                <!-- Esta linea es para aceptar mas de 2 caracteres en el input. -->
+                <div
+                  [hidden]="!nombre.errors?.required"
+                  class="invalid-feedback"
+                >
+                  Nombre Requerido 
+                </div>
+                <div
+                  [hidden]="!nombre.errors?.minlength"
+                  class="invalid-feedback"
+                >
+                  Debe tener almenos 2 caracteres la caja de texto 
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="apellido">Apellido*</label>
+                <input
+                  type="text"
+                  name="apellido"
+                  class="form-control"
+                  #apellido="ngModel"
+                  [(ngModel)]="clienteFront.apellido"
+                  [ngClass]="{
+                    'is-invalid': apellido.errors && apellido.touched
+                  }"
+                  required
+                  minlength="2"
+                />
+                <!-- Esta linea es para aceptar mas de 2 caracteres en el input. -->
+                <div
+                  [hidden]="!apellido.errors?.required"
+                  class="invalid-feedback"
+                >
+                  Apellido Requerido 
+                </div>
+                <div
+                  [hidden]="!apellido.errors?.minlength"
+                  class="invalid-feedback"
+                >
+                  Debe tener almenos 2 caracteres la caja de texto
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="celular">Celular</label>
+                <input
+                  type="number"
+                  name="celular"
+                  class="form-control"
+                  #Celular="ngModel"
+                  [(ngModel)]="clienteFront.celular"
+                  [ngClass]="{
+                    'is-invalid': Celular.errors && Celular.touched
+                  }"
+                  minlength="9"
+                />
+                <!-- Esta linea es para aceptar mas de 9 caracteres en el input. -->
+                <!-- <div
+                  [hidden]="!Celular.errors?.required"
+                  class="invalid-feedback"
+                >
+                  Celular Requerido !!!
+                </div>
+                <div
+                  [hidden]="!Celular.errors?.minlength"
+                  class="invalid-feedback"
+                >
+                  Debe tener almenos 9 caracteres la caja de texto !!!
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  #email="ngModel"
+                  [(ngModel)]="clienteFront.email"
+                  [ngClass]="{ 'is-invalid': email.errors && email.touched }"
+                  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                />
+                <!-- pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" -->
+                <!-- <div
+                  [hidden]="!email.errors?.required"
+                  class="invalid-feedback"
+                >
+                  Email Requerido !!!
+                </div>
+                <div [hidden]="!email.errors?.pattern" class="invalid-feedback">
+                  Email Invalido!!!
+                </div> -->
+              </div>
+
+              <div class="form-group">
+                <label for="producto">Tipo de Producto*</label>
+                <input
+                  type="text"
+                  name="producto"
+                  class="form-control"
+                  #producto="ngModel"
+                  [(ngModel)]="clienteFront.producto"
+                  [ngClass]="{
+                    'is-invalid': producto.errors && producto.touched
+                  }"
+                  required
+                  minlength="10"
+                />
+                <!-- Esta linea es para aceptar mas de 9 caracteres en el input. -->
+                <div
+                  [hidden]="!producto.errors?.required"
+                  class="invalid-feedback"
+                >
+                  Producto Requerido 
+                </div>
+                <div
+                  [hidden]="!producto.errors?.minlength"
+                  class="invalid-feedback"
+                >
+                  Debe tener almenos 10 caracteres la caja de texto 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>

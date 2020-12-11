@@ -1,0 +1,7 @@
+.navbar-collapse {
+  height: 85px !important;
+}
+
+.navbar-dark .navbar-nav .router-link-active {
+  color: white;
+}

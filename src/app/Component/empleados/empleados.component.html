@@ -1,0 +1,213 @@
+
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>
+          <i class="fas fa-cog"></i>Control de Empleados
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<section id="actions" class="py-4 mb-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <a href="#" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#agregarEmpleadoModal">
+          <i class="fas fa-plus">Agregar Empleado</i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Listar Empleados -->
+<section id="actions" class="py-4 mb-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header" style="background-color: #0f0a0a;">
+            <h4 style="color: white;">Listado de Empleados</h4>
+          </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dni</th>
+                <th>Celular</th>
+                <th>Correo</th>
+                <th>Dirección</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let empleado of empleadosFront; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{empleado.nombre}}</td>
+                <td>{{empleado.apellido}}</td>
+                <td>{{empleado.dni}}</td>
+                <td>{{empleado.celular}}</td>
+                <td>{{empleado.email}}</td>
+                <td>{{empleado.direccion}}</td>
+                <td>
+                  <a routerLink="/empleado/editar/{{empleado.id}}" class="btn btn-outline-secondary">
+                    <i class="fas fa-angle-double-right"></i>Editar
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Tarjetas Laterales a la Tabla !!!-->
+      <div class="col-md-3">
+        <div class="card text-center bg-success text-white mb-3">
+          <div class="card-body">
+            <h3>Total Empleados</h3>
+            <h4 class="display-4">
+              <i class="fas fa-users"></i> {{empleadosFront?.length}}
+            </h4>
+          </div>
+        </div>
+      <!-- Fin de las Tarjetas Laterales!!!-->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Se agrega el Codigo de la Ventana del Empleados Modal -->
+<div class="modal fade" id="agregarEmpleadoModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-info text-white">
+        <h5 class="modal-title">Agregar Empleados</h5>
+        <button class="close" data-dismiss="modal" #botonCerrar>
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <flash-messages></flash-messages>
+
+      <!-- Se Crea el Formulario del Producto Modal -->
+      <form #empleadoForm="ngForm" (ngSubmit)="agregarEmpleado(empleadoForm)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input
+            type="text"
+            name="nombre"
+            class="form-control"
+            #nombre="ngModel"
+            [(ngModel)]="empleadoFront.nombre"
+            [ngClass]="{'is-invalid': nombre.errors && nombre.touched}"
+            required
+            minlength="2"><!-- Esta linea es para aceptar mas de 2 caracteres en el input. -->
+            <div [hidden]="!nombre.errors?.required" class="invalid-feedback">
+                Nombre Requerido 
+            </div>
+            <div [hidden]="!nombre.errors?.minlength" class="invalid-feedback">
+              Debe tener almenos 2 caracteres la caja de texto 
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input
+            type="text"
+            name="apellido"
+            class="form-control"
+            #apellido="ngModel"
+            [(ngModel)]="empleadoFront.apellido"
+            [ngClass]="{'is-invalid': apellido.errors && apellido.touched}"
+            required
+            minlength="2"><!-- Esta linea es para aceptar mas de 2 caracteres en el input. -->
+            <div [hidden]="!apellido.errors?.required" class="invalid-feedback">
+                Caracteristica Requerido 
+            </div>
+            <div [hidden]="!apellido.errors?.minlength" class="invalid-feedback">
+              Debe tener almenos 2 caracteres la caja de texto 
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dni">DNI</label>
+            <input
+            type="number"
+            name="dni"
+            class="form-control"
+            #dni="ngModel"
+            [(ngModel)]="empleadoFront.dni"
+            [ngClass]="{'is-invalid': dni.errors && dni.touched}"
+            required
+            minlength="8"
+            maxlength="9">
+            <div [hidden]="!dni.errors?.required" class="invalid-feedback">
+                El DNI Es Requerido
+            </div>
+            <div [hidden]="!dni.errors?.minlength" class="invalid-feedback">
+              Debe tener almenos 2 caracteres la caja de texto 
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="celular">Celular</label>
+            <input
+            type="number"
+            name="celular"
+            class="form-control"
+            #celular="ngModel"
+            [(ngModel)]="empleadoFront.celular"
+            [ngClass]="{'is-invalid': celular.errors && celular.touched}"
+            required
+            maxlength="8">
+            <div [hidden]="!celular.errors?.required" class="invalid-feedback">
+                El Celular Es Requerido
+            </div>
+            <div [hidden]="!celular.errors?.minlength" class="invalid-feedback">
+              Debe tener almenos 2 caracteres la caja de texto 
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo</label>
+            <input
+            type="mail"
+            name="email"
+            class="form-control"
+            #email="ngModel"
+            [(ngModel)]="empleadoFront.email"
+            [ngClass]="{'is-invalid': email.errors && email.touched}"
+            required>
+            <div [hidden]="!email.errors?.required" class="invalid-feedback">
+                El Correo Es Requerido
+            </div>
+            <div [hidden]="!email.errors?.minlength" class="invalid-feedback">
+              Debe tener almenos 2 caracteres la caja de texto 
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="direccion">Direccion</label>
+            <input
+            type="text"
+            name="direccion"
+            class="form-control"
+            #direccion="ngModel"
+            [(ngModel)]="empleadoFront.direccion"
+            [ngClass]="{'is-invalid': direccion.errors && direccion.touched}"
+            required>
+            <div [hidden]="!direccion.errors?.required" class="invalid-feedback">
+                El Dirección Es Requerido
+            </div>
+            <div [hidden]="!direccion.errors?.minlength" class="invalid-feedback">
+              Debe tener almenos 2 caracteres la caja de texto 
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-outline-primary" [disabled]="!empleadoForm.valid">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

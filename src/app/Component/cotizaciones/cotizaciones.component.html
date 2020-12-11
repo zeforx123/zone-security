@@ -1,0 +1,54 @@
+
+<header id="main-header" class="py-2 bg-info text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>
+          <i class="fas fa-cog"></i>Control de Cotizaciones
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="actions" class="py-4 mb-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 mb-4">
+        <div class="export-excel">
+          <button class="btn btn-primary" (click)="exportexcel()">Exportar en Excel</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header" style="background-color: #0f0a0a;">
+            <h4 style="color: white;">Listado de Cotizaciones</h4>
+          </div>
+          <table class="table table-striped" id='excel-table'>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Celular</th>
+                <th>Email</th>
+                <th>Mensaje</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cotizaciones of cotizacionesFront; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{cotizaciones.fullname}}</td>
+                <td>{{cotizaciones.cellphone}}</td>
+                <td>{{cotizaciones.email}}</td>
+                <td>{{cotizaciones.message}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</section>
