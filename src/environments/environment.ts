@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseConfig : {
+   firebaseConfig : {
     apiKey: 'AIzaSyCvcXEFxPt4iDWsaf0qi_O6fQfhwlW3Onc',
     authDomain: 'sisenmetal.firebaseapp.com',
     databaseURL: 'https://sisenmetal.firebaseio.com',

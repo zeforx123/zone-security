@@ -22,14 +22,14 @@
           </a>
         </div>
         <div class="col-md-3">
-          <button type="submit" class="btn btn-success btn-block">
+          <button type="submit" class="btn btn-success btn-block" [disabled]="!empleadoForm.valid">
             <i class="fa fa-check"></i> Guardar Empleado
           </button>
         </div>
         <div class="col-md-3">
-          <a  (click)="eliminar()" class="btn btn-danger btn-block">
+          <button type="button"  (click)="eliminar()" class="btn btn-danger btn-block">
             <i class="fas fa-trash"></i> Eliminar Empleado
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -102,12 +102,13 @@
               <div class="form-group">
                 <label for="dni">DNI</label>
                 <input
-                  type="number"
+                  type="text"
                   name="dni"
                   class="form-control"
                   #dni="ngModel"
                   [(ngModel)]="empleadoFront.dni"
                   [ngClass]="{ 'is-invalid': dni.errors && dni.touched }"
+                  minlength="8"
                   required
                 />
                 <div

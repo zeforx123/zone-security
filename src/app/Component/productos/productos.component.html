@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-8">
         <h1>
-          <i class="fas fa-cog"></i>Control de Productos
+          Control de Productos
         </h1>
       </div>
     </div>
@@ -36,7 +36,7 @@
               <tr>
                 <th>#</th>
                 <th>Nombre</th>
-                <th>Caracteristica</th>
+                <th>Característica</th>
                 <th>Precio</th>
               </tr>
             </thead>
@@ -54,19 +54,15 @@
               </tr>
             </tbody>
           </table>
+          <div *ngIf="isLoading" class="text-center spinner">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
         </div>
       </div>
       <!-- Tarjetas Laterales a la Tabla !!!-->
       <div class="col-md-3">
-        <div class="card text-center bg-danger text-white mb-3">
-          <div class="card-body">
-            <h3>Costo Total</h3>
-            <h4 class="display-4">
-              {{getCostoTotal() | currency:'SOL':'s/'}}
-            </h4>
-          </div>
-        </div>
-
         <div class="card text-center bg-success text-white mb-3">
           <div class="card-body">
             <h3>Total Productos</h3>
@@ -86,7 +82,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header bg-info text-white">
-        <h5 class="modal-title">Agregar Productos</h5>
+        <h5 class="modal-title">Agregar Producto</h5>
         <button class="close" data-dismiss="modal" #botonCerrar>
           <span>&times;</span>
         </button>
@@ -98,7 +94,7 @@
       <form #productoForm="ngForm" (ngSubmit)="agregarProducto(productoForm)">
         <div class="modal-body">
           <div class="form-group">
-            <label for="nombre">Nombre*</label>
+            <label for="nombre">Nombre del Producto *</label>
             <input
             type="text"
             name="nombre"
@@ -117,7 +113,7 @@
           </div>
 
           <div class="form-group">
-            <label for="caracteristica">Caracteristica*</label>
+            <label for="caracteristica">Característica *</label>
             <input
             type="text"
             name="caracteristica"

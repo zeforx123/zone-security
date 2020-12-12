@@ -23,7 +23,7 @@
       <div class="col-md-9">
         <div class="card">
           <div class="card-header" style="background-color: #0f0a0a;">
-            <h4 style="color: white;">Listado de Cliente</h4>
+            <h4 style="color: white;">Listado de Clientes</h4>
           </div>
           <table class="table table-striped" style="text-align: center;">
             <thead>
@@ -32,7 +32,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Celular</th>
-                <th>Email</th>
+                <th>Correo electrónico</th>
                 <th>Tipo de producto</th>
               </tr>
             </thead>
@@ -55,6 +55,11 @@
               </tr>
             </tbody>
           </table>
+          <div *ngIf="isLoading" class="text-center spinner">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
         </div>
       </div>
       <!-- Tarjetas Laterales a la Tabla !!!-->
@@ -90,7 +95,7 @@
       <form #clienteForm="ngForm" (ngSubmit)="agregarCliente(clienteForm)">
         <div class="modal-body">
           <div class="form-group">
-            <label for="nombre">Nombre*</label>
+            <label for="nombre">Nombre *</label>
             <input
               type="text"
               name="nombre"
@@ -110,7 +115,7 @@
           </div>
 
           <div class="form-group">
-            <label for="apellido">Apellido*</label>
+            <label for="apellido">Apellido *</label>
             <input
               type="text"
               name="apellido"
@@ -169,7 +174,7 @@
             </div> -->
           </div>
           <div class="form-group">
-            <label for="producto">Tipo de Producto*</label>
+            <label for="producto">Tipo de Producto *</label>
             <input
               type="text"
               name="producto"

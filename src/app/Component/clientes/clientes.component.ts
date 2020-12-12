@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ClienteServicio } from 'src/app/Services/cliente.service';
 import { Cliente } from '../../Model/cliente.model';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { NgForm, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -24,19 +24,15 @@ export class ClientesComponent implements OnInit {
   @ViewChild('clienteForm', { static: true }) clienteForm: NgForm;
   @ViewChild('botonCerrar', { static: true }) botonCerrar: ElementRef;
 
-  isLoading = false;
 
   constructor(private clientesServicio: ClienteServicio,
               private flashMessages: FlashMessagesService,
               private router: Router,
               ) { }
+  isLoading = false;
 
   ngOnInit() {
-    this.clientesServicio.getClientes().subscribe(
-      clientesDB => {
-        this.clientesFront = clientesDB;
-      }
-    );
+    this.loadClientes();
   }
 
   agregarCliente({value, valid}: {value: Cliente, valid: boolean}) {
@@ -55,12 +51,18 @@ export class ClientesComponent implements OnInit {
      }
     Swal.fire({
       icon: 'success',
-      title: 'Venta Agregada',
+      title: 'Cliente Agregado',
       showConfirmButton: false,
       timer: 1500
     });
   }
-
+  loadClientes() {
+    this.isLoading = true;
+    this.clientesServicio.getClientes().subscribe((clientesDB) => {
+      this.clientesFront = clientesDB;
+      this.isLoading = false;
+    });
+  }
   cerrarModal() {
     this.botonCerrar.nativeElement.click();
   }

@@ -65,13 +65,5 @@ export class EditarProductoComponent implements OnInit {
       });
       this.router.navigate(['/productos']);
     }
-    else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error al eliminar un producto',
-        showConfirmButton: false,
-        timer: 2500,
-      });
-    }
   }
 }

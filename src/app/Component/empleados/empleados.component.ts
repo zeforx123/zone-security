@@ -28,12 +28,10 @@ export class EmpleadosComponent implements OnInit {
   constructor(private empleadosServicio: EmpleadoServicio,
               private flashMessages: FlashMessagesService) { }
 
+    isLoading = false;
+
     ngOnInit() {
-      this.empleadosServicio.getEmpleados().subscribe(
-        productosDB => {
-          this.empleadosFront = productosDB;
-        }
-      );
+      this.loadEmployee();
     }
 
     agregarEmpleado({value, valid}: {value: Empleado, valid: boolean}) {
@@ -52,6 +50,14 @@ export class EmpleadosComponent implements OnInit {
       title: 'Empleado Agregado',
       showConfirmButton: false,
       timer: 1500
+    });
+  }
+
+  loadEmployee() {
+    this.isLoading = true;
+    this.empleadosServicio.getEmpleados().subscribe((empleadosDB) => {
+      this.empleadosFront = empleadosDB;
+      this.isLoading = false;
     });
   }
   cerrarModal() {

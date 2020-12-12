@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1><i class="fas fas-user"></i> Editar Venta</h1>
+        <h1><i class="fas fas-user"></i> Editar Cliente</h1>
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <a routerLink="/" class="btn btn-light btn-block">
+          <a routerLink="/clientes" class="btn btn-light btn-block">
             <i class="fas fa-arrow-left"></i> Regresar al Inicio
           </a>
         </div>
@@ -27,9 +27,9 @@
           </button>
         </div>
         <div class="col-md-3">
-          <a href="#" (click)="eliminar()" class="btn btn-danger btn-block">
+          <button type="button" (click)="eliminar()" class="btn btn-danger btn-block">
             <i class="fas fa-trash"></i> Eliminar Cliente
-          </a>
+          </button>
         </div>
       </div>
     </div>

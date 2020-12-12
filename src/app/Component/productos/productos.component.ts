@@ -26,13 +26,11 @@ export class ProductosComponent implements OnInit {
   constructor(private productosServicio: ProductoServicio,
               private flashMessages: FlashMessagesService) { }
 
+    isLoading = false;
+
 
     ngOnInit() {
-      this.productosServicio.getProductos().subscribe(
-        productosDB => {
-          this.productosFront = productosDB;
-        }
-      );
+      this.loadPrizes();
     }
 
     getCostoTotal() {
@@ -64,6 +62,13 @@ export class ProductosComponent implements OnInit {
     });
   }
 
+  loadPrizes() {
+    this.isLoading = true;
+    this.productosServicio.getProductos().subscribe((productosDB) => {
+      this.productosFront = productosDB;
+      this.isLoading = false;
+    });
+  }
   cerrarModal() {
     this.botonCerrar.nativeElement.click();
   }

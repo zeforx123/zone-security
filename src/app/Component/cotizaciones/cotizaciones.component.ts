@@ -22,11 +22,10 @@ export class CotizacionesComponent implements OnInit {
 
   constructor(private clientesServicio: CotizacionServicio) { }
 
+  isLoading = false;
+
   ngOnInit() {
-    this.clientesServicio.getQuotation().subscribe((cotizacionesDB) => {
-       this.cotizacionesFront = cotizacionesDB;
-      }
-    );
+    this.loadQuotation();
   }
   exportexcel(): void {
     /* pass here the table id */
@@ -41,5 +40,11 @@ export class CotizacionesComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
 
   }
-
+  loadQuotation() {
+    this.isLoading = true;
+    this.clientesServicio.getQuotation().subscribe((cotizacionesDB) => {
+      this.cotizacionesFront = cotizacionesDB;
+      this.isLoading = false;
+    });
+  }
 }

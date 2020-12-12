@@ -9,7 +9,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav">
       <li *ngIf="isLoggedIn" class="nav-item px-2">
-        <a routerLink="clientes" class="nav-link"> Clientes</a>
+        <a routerLink="clientes" routerLinkActive="router-link-active" class="nav-link"> Clientes</a>
       </li>
       <li *ngIf="isLoggedIn" class="nav-item px-2">
         <a routerLink="productos" routerLinkActive="router-link-active" class="nav-link"> Productos</a>
@@ -18,14 +18,14 @@
         <a routerLink="cotizaciones" routerLinkActive="router-link-active" class="nav-link"> Cotizaciones</a>
       </li>
       <li *ngIf="isLoggedIn && !isEmployee" class="nav-item px-2">
-        <a routerLink="empleados" class="nav-link"> Empleados</a>
+        <a routerLink="empleados" routerLinkActive="router-link-active" class="nav-link"> Empleados</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
       <li *ngIf="isLoggedIn" class="nav-item dropdown mr-3">
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-          <i class="fas fa-user"></i>Bienvenido {{loggedInUser}}
+        <a href="#" class="nav-link" data-toggle="dropdown">
+          <i class="fas fa-user mr-2" ></i>Bienvenido {{loggedInUser}}
         </a>
       </li>
 
@@ -36,7 +36,7 @@
       </li>
       <li *ngIf="isLoggedIn" class="nav-item">
         <a style="cursor: pointer" (click)="logout()" class="nav-link">
-          <i class="fas fa-user-times"></i> Salir
+          <i class="fas fa-sign-out-alt"></i> Salir
         </a>
       </li>
     </ul>

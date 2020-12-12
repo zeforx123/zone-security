@@ -59,21 +59,13 @@ export class EditarClienteComponent implements OnInit {
   eliminar() {
     if (confirm('¿Seguro que desea "ELIMINAR" el Cliente?')) {
       this.clientesServicio.eliminarCliente(this.clienteFront);
-      this.router.navigate(['/clientes']);
       Swal.fire({
         icon: 'success',
         title: 'Se elimino correctamente',
         showConfirmButton: false,
         timer: 2500,
       });
-    }else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error al eliminar un cliente ',
-        showConfirmButton: false,
-        timer: 2500,
-      });
+      this.router.navigate(['/clientes']);
     }
-
   }
 }

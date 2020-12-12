@@ -22,14 +22,14 @@
           </a>
         </div>
         <div class="col-md-3">
-          <button type="submit" class="btn btn-success btn-block">
+          <button type="submit" class="btn btn-success btn-block" [disabled]="!productoForm.valid">
             <i class="fa fa-check"></i> Guardar Producto
           </button>
         </div>
         <div class="col-md-3">
-          <a  (click)="eliminar()" class="btn btn-danger btn-block">
+          <button type="button"  (click)="eliminar()" class="btn btn-danger btn-block">
             <i class="fas fa-trash"></i> Eliminar Producto
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="nombre">Nombre</label>
+                <label for="nombre">Nombre del Producto*</label>
                 <input
                   type="text"
                   name="nombre"
@@ -72,7 +72,7 @@
               </div>
 
               <div class="form-group">
-                <label for="caracteristica">Caracteristica</label>
+                <label for="caracteristica">Característica</label>
                 <input
                   type="text"
                   name="caracteristica"
@@ -83,20 +83,20 @@
                     'is-invalid': caracteristica.errors && caracteristica.touched
                   }"
                   required
-                  minlength="2"
+                  minlength="9"
                 />
                 <!-- Esta linea es para aceptar mas de 2 caracteres en el input. -->
                 <div
                   [hidden]="!caracteristica.errors?.required"
                   class="invalid-feedback"
                 >
-                  Caracteristica Requerido !!!
+                  Caracteristica Requerido
                 </div>
                 <div
                   [hidden]="!caracteristica.errors?.minlength"
                   class="invalid-feedback"
                 >
-                  Debe tener almenos 9 caracteres la caja de texto !!!
+                  Debe tener almenos 9 caracteres la caja de texto 
                 </div>
               </div>
               <div class="form-group">

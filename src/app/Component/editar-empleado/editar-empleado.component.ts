@@ -68,14 +68,5 @@ export class EditarEmpleadoComponent implements OnInit {
       });
       this.router.navigate(['/empleados']);
     }
-    else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error al eliminar un empleado',
-        showConfirmButton: false,
-        timer: 2500,
-      });
-    }
- 
   }
 }
